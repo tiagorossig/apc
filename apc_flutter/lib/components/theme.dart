@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:apc_flutter/constants.dart';
+
 class ThemeApc extends StatelessWidget {
   const ThemeApc({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
     return Row(
       children: <Widget>[
-        Container(width: MediaQuery.of(context).size.width * .38), // offset 
+        Container(width: width * .38), // offset 
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -18,10 +21,11 @@ class ThemeApc extends StatelessWidget {
                   fontFamily: "Avenir", 
                   fontSize: 48, 
                   fontWeight: FontWeight.w800,
-                  height: 1.04
+                  height: 1.04,
+                  color: Constants.headGray
                 )
               ),
-              context
+              width
             ),
             responsiveText(
               Text(
@@ -30,10 +34,11 @@ class ThemeApc extends StatelessWidget {
                   fontFamily: "Avenir", 
                   fontSize: 24, 
                   fontWeight: FontWeight.w800, 
-                  height: 1.58
+                  height: 1.58,
+                  color: Constants.headGray
                 )
               ),
-              context
+              width
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .02), 
             responsiveText(
@@ -55,30 +60,28 @@ class ThemeApc extends StatelessWidget {
                   ]
                 )
               ), 
-              context
+              width
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .08), 
             Container(
-              width: MediaQuery.of(context).size.width * .47,
-              height: MediaQuery.of(context).size.width * .25,
+              width: width * .47,
+              height: width * .25,
               color: Color(0xFFC4C4C4)
             )
           ],
         ),
-        Container(width: MediaQuery.of(context).size.width * .14), // offset 
+        Container(width: width * .14), // offset 
       ],
     );
   }
 
   // text that wraps around to the next line without using the AutoSizeText package
-  Widget responsiveText(Widget textWidget, BuildContext context) {
+  Widget responsiveText(Widget textWidget, double width) {
     return Container(
-      width: MediaQuery.of(context).size.width * .47,
+      width: width * .47,
       child: Row(
         children: <Widget>[
-          Flexible(
-            child: textWidget
-          )
+          Flexible(child: textWidget),
         ]
       )
     );

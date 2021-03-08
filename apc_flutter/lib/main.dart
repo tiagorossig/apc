@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:apc_flutter/home.dart';
 
+import 'impl/triangle_painter.dart';
+
 void main() async {
   runApp(MyApp());
 }

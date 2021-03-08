@@ -49,11 +49,11 @@ flutter:
   fonts: 
     - family: Avenir
       fonts: 
+        # - asset: assets/fonts/avenir/Avenir-Book.otf
+        #   weight: 300
         - asset: assets/fonts/avenir/Avenir-Book.otf
-          weight: 300
-        - asset: assets/fonts/avenir/Avenir-Roman.otf
           weight: 400
-        - asset: assets/fonts/avenir/Avenir-Roman.otf
+        - asset: assets/fonts/avenir/Avenir-Black.otf
           weight: 800 
     - family: Futura
       fonts: 

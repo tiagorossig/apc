@@ -8,35 +8,34 @@ class Speakers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    
+    final double width = MediaQuery.of(context).size.width;
     return Container(
       color: Color(0xFF292F3D),
-      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .144, vertical: 75),
+      padding: EdgeInsets.symmetric(horizontal: width * .144, vertical: width * .025),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-         SizedBox(height: MediaQuery.of(context).size.width * .01),
+          SizedBox(height: width < Constants.mobile ? 80 : 30),
           Divider(
             color: Color(0xFFE0E0E0),
             height: 20,
             thickness: 2,
           ),
-          SizedBox(height: MediaQuery.of(context).size.width * .01),
+          SizedBox(height: width * .01),
           Text(
             "Speakers", 
             style: TextStyle(fontFamily: "Avenir", fontSize: 48, fontWeight: FontWeight.w800, color: Constants.lightGray)
           ),
-          SizedBox(height: MediaQuery.of(context).size.width * .01),
+          SizedBox(height: width * .01),
           ResponsiveGridRow(
             children: <ResponsiveGridCol>[
-              speaker(context), 
-              speaker(context),
-              speaker(context),
-              speaker(context), 
-              speaker(context),
-              speaker(context),
-              speaker(context)
+              speaker(context, width), 
+              speaker(context, width),
+              speaker(context, width),
+              speaker(context, width), 
+              speaker(context, width),
+              speaker(context, width),
+              speaker(context, width)
             ]
           ),
         ],
@@ -44,22 +43,22 @@ class Speakers extends StatelessWidget {
     );
   }
 
-  Widget speaker(context) {
+  Widget speaker(BuildContext context, double width) {
     final TextStyle speakerName = TextStyle(fontFamily: "Avenir", fontSize: 24, fontWeight: FontWeight.w800, color: Constants.lightGray);
-    final TextStyle speakerDescription = TextStyle(fontFamily: "Avenir", fontSize: 18, fontWeight: FontWeight.w400, color: Constants.lightGray);
-    final TextStyle speakerDescription2 = TextStyle(fontFamily: "Avenir", fontSize: 14, fontWeight: FontWeight.w400, color: Constants.lightGray);
-    double width = MediaQuery.of(context).size.width;
+    final TextStyle speakerDescription = TextStyle(fontFamily: "Avenir", fontSize: 18, fontWeight: FontWeight.w400, color: Constants.lightGray, height: 1.89);
+    final TextStyle speakerDescription2 = TextStyle(fontFamily: "Avenir", fontSize: 14, fontWeight: FontWeight.w300, color: Constants.lightGray, height: 1.71);
+    final int mobile = Constants.mobile;
 
     return ResponsiveGridCol(
       lg: 4,
       md: 6,
-      sm: 12,
+      xs: 12,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .018),
+        padding: EdgeInsets.symmetric(horizontal: width * .018),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget> [
-            width < 768 ? SizedBox(height: 10) : SizedBox(height: MediaQuery.of(context).size.width * .025),
+            width < mobile ? SizedBox(height: 10) : SizedBox(height: width * .025),
             Align(
               alignment: Alignment.center, 
                 child: FittedBox(
@@ -72,14 +71,13 @@ class Speakers extends StatelessWidget {
               alignment: Alignment.center, 
               child: Text("Fermentum Etiam", style: speakerName)
             ),
-            SizedBox(height: 5),
             Align(
               alignment: Alignment.center,
               child: Text("Tristique Pharetra", style: speakerDescription)
             ),
-            width < 768 ? SizedBox() : SizedBox(height: 8),
-            width < 768 ? SizedBox() : Text("Fermentum et egestas dui nulla fermentum pulvinar est. Egestas eu malesuada est molestie platea volutpat ullamcorper pharetra. At vel hendrerit amet, sit neque. Eu, dui vitae tristique pharetra libero maecenas sit lacus.", style: speakerDescription2),
-            width < 768 ? SizedBox(height: 10) : SizedBox(height: MediaQuery.of(context).size.width * .025)
+            width < mobile ? SizedBox() : SizedBox(height: 8),
+            width < mobile ? SizedBox() : Text("Fermentum et egestas dui nulla fermentum pulvinar est. Egestas eu malesuada est molestie platea volutpat ullamcorper pharetra. At vel hendrerit amet, sit neque. Eu, dui vitae tristique pharetra libero maecenas sit lacus.", style: speakerDescription2),
+            width < mobile ? SizedBox(height: 10) : SizedBox(height: width * .025)
           ]
         ),
       ),
