@@ -4,6 +4,7 @@ class Constants {
   static Color lightGray = Color(0xFFF2F2F2);
   static Color headGray = Color(0xFF333333);
   static Color red = Color(0xFFFF0002);
+  static Color apcBlue = Color(0xFF0433BF);
 
   static int mobile = 576;
   static int tablet = 768;

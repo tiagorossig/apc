@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:apc_flutter/impl/triangle.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+
+import 'package:apc_flutter/impl/triangle.dart';
 import 'package:apc_flutter/constants.dart';
 
 class Faq extends StatelessWidget {
@@ -18,14 +20,14 @@ class Faq extends StatelessWidget {
         children: <Widget>[
           SizedBox(height: width < Constants.mobile ? 54 : 30),
           Divider(
-            color: Color(0xFFE0E0E0),
+            color: Constants.lightGray,
             height: 20,
             thickness: 2,
           ),
           SizedBox(height: width < Constants.mobile ? 35 : MediaQuery.of(context).size.width * .02),
           ResponsiveGridRow(
             children: <ResponsiveGridCol>[
-              responsiveGridCol(header(), 2, 3, 12),
+              responsiveGridCol(header(width), 2, 3, 12),
               responsiveGridCol(content(width), 10, 9, 12)
             ]
           )
@@ -50,10 +52,14 @@ class Faq extends StatelessWidget {
     );
   }
 
-  Widget header() {
-    return Text(
-      "FAQs", 
-      style: TextStyle(fontFamily: "Avenir", fontSize: 48, fontWeight: FontWeight.w800, color: Constants.lightGray)
+  Widget header(double width) {
+    return Padding(
+      padding: EdgeInsets.only(right: width > Constants.mobile ? 15 : 0),
+      child: AutoSizeText(
+        "FAQs", 
+        style: TextStyle(fontFamily: "Avenir", fontSize: 48, fontWeight: FontWeight.w800, color: Constants.lightGray),
+        maxLines: 1,
+      )
     );
   }
 
@@ -95,7 +101,7 @@ class Faq extends StatelessWidget {
     );
   }
 
-  // text that wraps around to the next line without using the AutoSizeText package
+  // responsiveText... with a Triangle() in front if triangle = true
   Widget responsiveTextTriangle(Widget textWidget, double width, bool triangle) {
     return Container(
       width: width < Constants.mobile ? width * .85 : width * .45,

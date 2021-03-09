@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-import '../constants.dart';
+import 'package:apc_flutter/constants.dart';
 
 class Speakers extends StatelessWidget {
   const Speakers({Key key}) : super(key: key);

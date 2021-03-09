@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:responsive_grid/responsive_grid.dart';
 
 import 'package:apc_flutter/constants.dart';
@@ -46,7 +47,7 @@ class Sponsors extends StatelessWidget {
 
   EdgeInsets responsivePadding(double width) {
     if (width < Constants.mobile) {
-      return EdgeInsets.symmetric(horizontal: 24);
+      return EdgeInsets.only(left: 24, right: 24, bottom: 30);
     } else {
       return EdgeInsets.only(left: width * .265, right: width * .144);
     }
